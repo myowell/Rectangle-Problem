@@ -1,3 +1,5 @@
+from coordinate import Coordinate
+
 class Rectangle(object):
     '''
     Rectangle class for the Apprenda rectangle assessment
@@ -11,16 +13,16 @@ class Rectangle(object):
         bottomRight: The bottom right coordinate.
     '''
     
-    upperLeft = 0
-    upperRight = 0
-    bottomLeft = 0
-    bottomRight = 0
+    upperLeft = Coordinate(0, 0)
+    upperRight = Coordinate(0, 0)
+    bottomLeft = Coordinate(0, 0)
+    bottomRight = Coordinate(0, 0)
 
     def __init__(self, upperLeft, upperRight, bottomLeft, bottomRight):
         '''
         Inits Rectangle class
         '''
-        self.upperleft = upperLeft
+        self.upperLeft = upperLeft
         self.upperRight = upperRight
         self.bottomLeft = bottomLeft
         self.bottomRight = bottomRight
@@ -48,3 +50,12 @@ class Rectangle(object):
         Returns the bottom right coordinate of a rectangle.
         '''
         return self.bottomRight
+    
+    def validRectangle(self):
+        '''
+        Determines if a rectangle is valid
+        
+        A valid rectangle is meets the following criteria:
+        
+        '''
+        

@@ -8,5 +8,9 @@ This program will take the coordinates of two rectangles and determine the follo
 
 @author: Michael Yowell - michael.yowell@gmail.com
 '''
-def main():
-    exit()
+
+from classes.rectangle import Rectangle
+
+if __name__ == '__main__':
+    rect1 = Rectangle(1, 1, 4, 5)
+    print(rect1.getUpperLeft())
