@@ -10,7 +10,9 @@ This program will take the coordinates of two rectangles and determine the follo
 '''
 
 from classes.rectangle import Rectangle
+from classes.coordinate import Coordinate
 
 if __name__ == '__main__':
-    rect1 = Rectangle(1, 1, 4, 5)
-    print(rect1.getUpperLeft())
+    rect1 = Rectangle(Coordinate(3, 6), Coordinate(7, 6) , Coordinate(3, 3), Coordinate(7, 3))
+    rect2 = Rectangle(Coordinate(4, 7), Coordinate(8, 7) , Coordinate(4, 4), Coordinate(8, 4))
+    print(rect1.rectangleContains(rect2))

@@ -1,6 +1,6 @@
-class Coorindate(object):
+class Coordinate(object):
     '''
-    Coorindate class for Apprenda rectangle assessment
+    Coordinate class for Apprenda rectangle assessment
     
     This class contains and x value and y value of a point on a Cartesian plain 
     

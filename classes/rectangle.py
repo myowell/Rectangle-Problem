@@ -51,11 +51,46 @@ class Rectangle(object):
         '''
         return self.bottomRight
     
-    def validRectangle(self):
+    def isValidRectangle(self):
         '''
         Determines if a rectangle is valid
         
-        A valid rectangle is meets the following criteria:
+        A rectangle is valid iff it meets the following criteria:
+        ALL x and y coordinates are greater than zero
+        The upper left's x-coordinate equals the x-coordinate of the bottom left and its y-coordinate matches the y-coordinate of the top right
+        The bottom left's x-coordinate equals the y-coordinate of the bottom right
+        The bottom right's x-coordinate equals the x-coordinate of the top right
         
+        Return true if a rectangle is valid
+        
+        Return false if a rectangle is invalid
         '''
+        
+        if self.getUpperLeft().getX() == self.getBottomLeft().getX() \
+        and self.getUpperLeft().getY() == self.getUpperRight().getY() \
+        and self.getBottomLeft().getX() == self.getBottomRight().getY() \
+        and self.getBottomRight().getX() == self.getUpperRight().getX():
+            return True
+        else:
+            return False
+        
+    def rectangleContains(self, rectangleTwo):
+        '''
+        Determines if this rectangle is contained within another
+        
+        A rectangle is considered contained iff the x and y-coordinates for vertex are less than or equal to the vertices of another rectangle
+        
+        Return true if this rectangle is contained within rectangleTwo
+        
+        Return false if this rectangle is not contained within rectangleTwo
+        '''
+        
+        if self.getUpperLeft().getX() <= rectangleTwo.getUpperLeft().getX() and self.getUpperLeft().getY() <= rectangleTwo.getUpperLeft().getY() \
+        and self.getUpperRight().getX() <= rectangleTwo.getUpperRight().getX() and self.getUpperRight().getY() <= rectangleTwo.getUpperRight().getY() \
+        and self.getBottomLeft().getX() <= rectangleTwo.getBottomLeft().getX() and self.getBottomLeft().getY() <= rectangleTwo.getBottomLeft().getY() \
+        and self.getBottomRight().getX() <= rectangleTwo.getBottomRight().getX() and self.getBottomRight().getY() <= rectangleTwo.getBottomRight().getY():
+            return True
+        else:
+            return False
+         
         
