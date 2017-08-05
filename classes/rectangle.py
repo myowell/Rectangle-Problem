@@ -105,9 +105,7 @@ class Rectangle(object):
         
         Attributes:
             rectangleTwo: A instance of the Rectangle() class.
-        '''    
-        
-           
+        '''              
         if self.getUpperLeft().getX() <= rectangleTwo.getUpperLeft().getX() and self.getUpperLeft().getY() <= rectangleTwo.getUpperLeft().getY() \
         and self.getUpperRight().getX() <= rectangleTwo.getUpperRight().getX() and self.getUpperRight().getY() <= rectangleTwo.getUpperRight().getY() \
         and self.getBottomLeft().getX() <= rectangleTwo.getBottomLeft().getX() and self.getBottomLeft().getY() <= rectangleTwo.getBottomLeft().getY() \
@@ -115,5 +113,20 @@ class Rectangle(object):
             return True
         else:
             return False
-         
+        
+    def rectangleAdjacent(self, rectangleTwo):
+        '''
+        Determines if this rectangle is adjacent to another.
+        
+        A rectangle is considered adjacent if it shares a top or right side with another rectangle. 
+        A shared side may encompass the entire side or be sub-line of the other rectangle.
+        
+        Attributes:
+            rectangleTwo: An instance of the Rectangle() class.
+        '''
+        if (rectangleTwo.getUpperLeft().getX() >= self.getBottomLeft().getX() and rectangleTwo.getUpperRight().getX() <= self.getBottomRight().getX()) \
+         or (rectangleTwo.getUpperRight().getY() >= self.getUpperLeft().getY() and rectangleTwo.getBottomRight().getY() <= self.getBottomRight().getY()):
+            return True
+        else:
+            return False
         

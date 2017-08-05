@@ -13,6 +13,7 @@ from classes.rectangle import Rectangle
 from classes.coordinate import Coordinate
 
 if __name__ == '__main__':
-    rect1 = Rectangle(Coordinate(1, 5), Coordinate(3, 5) , Coordinate(1, 2), Coordinate(3, 2))
-    rect2 = Rectangle(Coordinate(1, 8), Coordinate(3, 8) , Coordinate(1, 7), Coordinate(3, 7))
-    print(rect1.rectangleIntersects(rect2))
+    rect1 = Rectangle(Coordinate(1, 5), Coordinate(4, 5) , Coordinate(2, 3), Coordinate(4, 3))
+    rect2 = Rectangle(Coordinate(1, 3), Coordinate(4, 3) , Coordinate(1, 1), Coordinate(4, 1))
+    print(rect1.rectangleAdjacent(rect2))
+    print(rect2.rectangleAdjacent(rect1))
