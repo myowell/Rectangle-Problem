@@ -3,6 +3,9 @@ from classes.rectangle import Rectangle
 from classes.coordinate import Coordinate
 
 class TestContain(unittest.TestCase):
+    ''' 
+    Unit Testing Package for Rectangle-Problem
+    '''
     def testContainOne(self):
         
         #One rectangle contains another
