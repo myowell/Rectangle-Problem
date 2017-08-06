@@ -57,7 +57,7 @@ class Rectangle(object):
         Determines if a rectangle is valid
         
         A rectangle is valid iff it meets the following criteria:
-        ALL x and y coordinates are greater than zero.
+        ALL x and y coordinates are positive integers.
         The upper left's x-coordinate equals the x-coordinate of the bottom left and its y-coordinate matches the y-coordinate of the top right.
         The bottom left's x-coordinate equals the y-coordinate of the bottom right.
         The bottom right's x-coordinate equals the x-coordinate of the top right.
@@ -85,13 +85,14 @@ class Rectangle(object):
         Return false if the two rectangles do not intersect.
         
         Attributes:
-            rectangleTwo: A instance of the Rectangle() class
-        '''      
-        if (self.getUpperLeft().getX() > rectangleTwo.getBottomRight().getX() or rectangleTwo.getUpperLeft().getX() > self.getBottomRight().getX()) \
-        or (self.getUpperLeft().getY() < rectangleTwo.getBottomRight().getY() or rectangleTwo.getUpperLeft().getY() < self.getBottomRight().getY()):
+            rectangleTwo: A instance of the Rectangle class
+        '''            
+        
+        if self.getUpperLeft().getX() > rectangleTwo.getBottomRight().getX() or rectangleTwo.getUpperLeft().getX() > self.getBottomRight().getX() \
+        or self.getUpperLeft().getY() < rectangleTwo.getBottomRight().getY() or rectangleTwo.getUpperLeft().getY() < self.getBottomRight().getY():
             return False
         else:
-            return True;
+            return True
         
     def rectangleContains(self, rectangleTwo):
         '''
@@ -104,12 +105,10 @@ class Rectangle(object):
         Return false if this rectangle is not contained within rectangleTwo.
         
         Attributes:
-            rectangleTwo: A instance of the Rectangle() class.
+            rectangleTwo: A instance of the Rectangle class.
         '''              
-        if self.getUpperLeft().getX() <= rectangleTwo.getUpperLeft().getX() and self.getUpperLeft().getY() <= rectangleTwo.getUpperLeft().getY() \
-        and self.getUpperRight().getX() <= rectangleTwo.getUpperRight().getX() and self.getUpperRight().getY() <= rectangleTwo.getUpperRight().getY() \
-        and self.getBottomLeft().getX() <= rectangleTwo.getBottomLeft().getX() and self.getBottomLeft().getY() <= rectangleTwo.getBottomLeft().getY() \
-        and self.getBottomRight().getX() <= rectangleTwo.getBottomRight().getX() and self.getBottomRight().getY() <= rectangleTwo.getBottomRight().getY():
+        if self.getUpperLeft().getX() >= rectangleTwo.getUpperLeft().getX() and self.getUpperLeft().getY() <= rectangleTwo.getUpperLeft().getY() \
+        and self.getBottomRight().getX() <= rectangleTwo.getBottomRight().getX() and self.getBottomRight().getY() >= rectangleTwo.getBottomRight().getY():
             return True
         else:
             return False
@@ -121,12 +120,24 @@ class Rectangle(object):
         A rectangle is considered adjacent if it shares a top or right side with another rectangle. 
         A shared side may encompass the entire side or be sub-line of the other rectangle.
         
+        Return true if the rectangles are adjacent
+        
+        Return false if the rectangles are not adjacent
+        
         Attributes:
             rectangleTwo: An instance of the Rectangle() class.
         '''
-        if (rectangleTwo.getUpperLeft().getX() >= self.getBottomLeft().getX() and rectangleTwo.getUpperRight().getX() <= self.getBottomRight().getX()) \
-         or (rectangleTwo.getUpperRight().getY() >= self.getUpperLeft().getY() and rectangleTwo.getBottomRight().getY() <= self.getBottomRight().getY()):
+        
+        #Check adjacency along right side
+        if self.getBottomRight().getX() == rectangleTwo.getBottomLeft().getX() and self.getUpperRight().getX() == rectangleTwo.getUpperLeft().getX() \
+        and self.getBottomRight().getY() >= rectangleTwo.getBottomLeft().getY() and self.getUpperRight().getY() <= rectangleTwo.getUpperLeft().getY():
             return True
-        else:
-            return False
+        
+        #Check adjacency along top
+        
+        if self.getUpperLeft().getY() == rectangleTwo.getBottomLeft().getY() and self.getUpperRight().getY() == rectangleTwo.getBottomRight().getY() \
+        and self.getUpperLeft().getX() >= rectangleTwo.getBottomLeft().getX() and self.getUpperRight().getX() <= rectangleTwo.getBottomRight().getX():
+            return True
+        
+        return False
         
